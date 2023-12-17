@@ -3,10 +3,10 @@ class TodoFilter extends React.Component {
     render() {
         return (
             <>
-                <div class="todo-filter-container">
-                    <div class="todo-filter-count">3 items left</div>
-                    <div class="todo-filter-status">
-                        <span class="active">All</span>
+                <div className="todo-filter-container">
+                    <div className="todo-filter-count">3 items left</div>
+                    <div className="todo-filter-status">
+                        <span className="active">All</span>
                         <span>Active</span>
                         <span>Complete</span>
                     </div>

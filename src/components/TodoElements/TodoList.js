@@ -5,56 +5,57 @@ import deleteIcon from "../../assets/delete.svg";
 import editIcon from "../../assets/edit.svg";
 
 class TodoList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        const listTask = this.props.listTask;
+
         return (
             <>
-                <div class="todo-list-container">
-                    <div class="todo-item-container">
-                        <span class="todo-item-toggle">
-                            <img src={complete_tick} alt="tick" />
-                        </span>
-                        <div class="todo-item-content completed">
-                            Ăn bánh mì
-                        </div>
-                        <div class="todo-item-options">
-                            <span class="icon-btn">
-                                <img src={editIcon} alt="edit" />
-                            </span>
-                            <span class="icon-btn">
-                                <img src={deleteIcon} alt="close" />
-                            </span>
-                        </div>
-                    </div>
-                    <div class="todo-item-container">
-                        <span class="todo-item-toggle">
-                            <img src={active_tick} alt="tick" />
-                        </span>
-                        <div class="todo-item-content">
-                            Uống một tách trà nóng
-                        </div>
-                        <div class="todo-item-options">
-                            <span class="icon-btn">
-                                <img src={editIcon} alt="edit" />
-                            </span>
-                            <span class="icon-btn">
-                                <img src={deleteIcon} alt="close" />
-                            </span>
-                        </div>
-                    </div>
-                    <div class="todo-item-container">
-                        <span class="todo-item-toggle">
-                            <img src={active_tick} alt="tick" />
-                        </span>
-                        <div class="todo-item-content">Thực hành lập trình</div>
-                        <div class="todo-item-options">
-                            <span class="icon-btn">
-                                <img src={editIcon} alt="edit" />
-                            </span>
-                            <span class="icon-btn">
-                                <img src={deleteIcon} alt="close" />
-                            </span>
-                        </div>
-                    </div>
+                <div className="todo-list-container">
+                    {listTask &&
+                        listTask.length > 0 &&
+                        listTask.map((item) => {
+                            return (
+                                <>
+                                    <div
+                                        className="todo-item-container"
+                                        key={`task-${item.uid + 1}`}
+                                    >
+                                        <span className="todo-item-toggle">
+                                            <img
+                                                src={complete_tick}
+                                                alt="tick"
+                                            />
+                                        </span>
+                                        <div className="todo-item-content">
+                                            {item.task}
+                                        </div>
+                                        <div className="todo-item-options">
+                                            <span className="icon-btn">
+                                                <img
+                                                    src={editIcon}
+                                                    alt="edit"
+                                                />
+                                            </span>
+                                            <span className="icon-btn">
+                                                <img
+                                                    src={deleteIcon}
+                                                    alt="close"
+                                                    onClick={() => {
+                                                        this.props.handleDeleteTask(
+                                                            item.uid
+                                                        );
+                                                    }}
+                                                />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </>
+                            );
+                        })}
                 </div>
             </>
         );

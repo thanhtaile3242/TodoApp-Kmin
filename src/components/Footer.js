@@ -4,8 +4,8 @@ class Footer extends React.Component {
     render() {
         return (
             <>
-                <footer class="footer">
-                    <img class="footer__logo" src={logo} alt="KMIN logo" />
+                <footer className="footer">
+                    <img className="footer__logo" src={logo} alt="KMIN logo" />
                 </footer>
             </>
         );
