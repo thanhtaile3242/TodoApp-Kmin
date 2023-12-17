@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kmin | ReactJS | Todos</title>
+</head>
+
+<body>
+    <div id="todo-app">
+        <!-- Header -->
+        <h3 class="header">
+            <span class="header__title">My Todos</span>
+        </h3>
+
+        <div class="todo-container-wrapper">
+            <div class="todo-container">
+                <!-- TodoForm -->
+                <div class="todo-form-container">
+                    <form>
+                        <input type="text" placeholder="What need to be done?" />
+                    </form>
+                </div>
+
+                <!-- TodoFilter -->
+                <div class="todo-filter-container">
+                    <div class="todo-filter-count">3 items left</div>
+                    <div class="todo-filter-status">
+                        <span class="active">
+                            All
+                        </span>
+                        <span>
+                            Active
+                        </span>
+                        <span>
+                            Complete
+                        </span>
+                    </div>
+                </div>
+
+                <!-- TodoList -->
+                <div class="todo-list-container">
+
+                    <!-- TodoItem -->
+                    <div class="todo-item-container">
+                        <span class="todo-item-toggle">
+                            <img src="assets/complete-tick.svg" alt="tick" />
+                        </span>
+                        <div class="todo-item-content completed">
+                            Ăn bánh mì
+                        </div>
+                        <div class="todo-item-options">
+                            <span class="icon-btn">
+                                <img src="assets/edit.svg" alt="edit" />
+                            </span>
+                            <span class="icon-btn">
+                                <img src="assets/delete.svg" alt="close" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="todo-item-container">
+                        <span class="todo-item-toggle">
+                            <img src="assets/active-tick.svg" alt="tick" />
+                        </span>
+                        <div class="todo-item-content">
+                            Uống một tách trà nóng
+                        </div>
+                        <div class="todo-item-options">
+                            <span class="icon-btn">
+                                <img src="assets/edit.svg" alt="edit" />
+                            </span>
+                            <span class="icon-btn">
+                                <img src="assets/delete.svg" alt="close" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="todo-item-container">
+                        <span class="todo-item-toggle">
+                            <img src="assets/active-tick.svg" alt="tick" />
+                        </span>
+                        <div class="todo-item-content">
+                            Đến Academy học lập trình
+                        </div>
+                        <div class="todo-item-options">
+                            <span class="icon-btn">
+                                <img src="assets/edit.svg" alt="edit" />
+                            </span>
+                            <span class="icon-btn">
+                                <img src="assets/delete.svg" alt="close" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="todo-item-container">
+                        <span class="todo-item-toggle">
+                            <img src="assets/active-tick.svg" alt="tick" />
+                        </span>
+                        <div class="todo-item-content">
+                            Ăn trưa cùng crush
+                        </div>
+                        <div class="todo-item-options">
+                            <span class="icon-btn">
+                                <img src="assets/edit.svg" alt="edit" />
+                            </span>
+                            <span class="icon-btn">
+                                <img src="assets/delete.svg" alt="close" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="todo-item-container">
+                        <span class="todo-item-toggle">
+                            <img src="assets/active-tick.svg" alt="tick" />
+                        </span>
+                        <div class="todo-item-content">
+                            Thực hành lập trình
+                        </div>
+                        <div class="todo-item-options">
+                            <span class="icon-btn">
+                                <img src="assets/edit.svg" alt="edit" />
+                            </span>
+                            <span class="icon-btn">
+                                <img src="assets/delete.svg" alt="close" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <img class="footer__logo" src="assets/kmin-logo.png" alt="KMIN logo" />
+        </footer>
+    </div>
+</body>
+
+</html>
