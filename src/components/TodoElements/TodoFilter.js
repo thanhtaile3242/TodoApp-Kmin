@@ -14,7 +14,7 @@ class TodoFilter extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.isAdd === true) {
+        if (this.props.isChange === true) {
             this.setState({
                 choiceAll: true,
                 choiceComplete: false,

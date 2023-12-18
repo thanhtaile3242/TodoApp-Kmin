@@ -8,7 +8,7 @@ class Main extends React.Component {
         this.state = {
             listTask: [],
             listFilterTask: [],
-            isAdd: false,
+            isChange: false,
         };
         this.handleAddTask = this.handleAddTask.bind(this);
         this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -37,7 +37,7 @@ class Main extends React.Component {
         this.setState((state) => ({
             listTask: [...state.listTask, taskObject],
             listFilterTask: [...state.listTask, taskObject],
-            isAdd: true,
+            isChange: true,
         }));
         const listTaskLocal = localStorage.getItem("list");
         let arr = JSON.parse(listTaskLocal);
@@ -53,7 +53,7 @@ class Main extends React.Component {
         this.setState({
             listTask: newListTask1,
             listFilterTask: newListTask2,
-            isAdd: true,
+            isChange: true,
         });
         localStorage.setItem("list", JSON.stringify(newListTask1));
     }
@@ -68,7 +68,7 @@ class Main extends React.Component {
         this.setState({
             listTask: listTaskClone,
             listFilterTask: listTaskClone,
-            isAdd: true,
+            isChange: true,
         });
         localStorage.setItem("list", JSON.stringify(listTaskClone));
     }
@@ -111,7 +111,7 @@ class Main extends React.Component {
 
     handleFilterAllTask() {
         let listTaskClone = [...this.state.listTask];
-        this.setState({ listFilterTask: listTaskClone, isAdd: false });
+        this.setState({ listFilterTask: listTaskClone, isChange: false });
     }
     render() {
         return (
@@ -120,7 +120,7 @@ class Main extends React.Component {
                     <div className="todo-container">
                         <TodoForm handleAddTask={this.handleAddTask} />
                         <TodoFilter
-                            isAdd={this.state.isAdd}
+                            isChange={this.state.isChange}
                             listFilterTask={this.state.listFilterTask}
                             handleFilterCompleteTask={
                                 this.handleFilterCompleteTask
