@@ -19,6 +19,7 @@ class TodoForm extends React.Component {
                 this.props.handleAddTask({
                     uid: uuidv4(),
                     task: newTask,
+                    isCompleted: false,
                 });
 
                 this.setState({ task: "" });

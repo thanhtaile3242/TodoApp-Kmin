@@ -3,10 +3,23 @@ import active_tick from "../../assets/active-tick.svg";
 import complete_tick from "../../assets/complete-tick.svg";
 import deleteIcon from "../../assets/delete.svg";
 import editIcon from "../../assets/edit.svg";
-
+import ModalEdit from "./ModalEdit.js";
 class TodoList extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isShowHideModelEdit: false,
+            editTask: {},
+        };
+        this.handleSetShowHideModalEdit =
+            this.handleSetShowHideModalEdit.bind(this);
+    }
+
+    handleSetShowHideModalEdit(obj) {
+        this.setState({
+            isShowHideModelEdit: !this.state.isShowHideModelEdit,
+            editTask: { ...obj },
+        });
     }
 
     render() {
@@ -26,11 +39,26 @@ class TodoList extends React.Component {
                                     >
                                         <span className="todo-item-toggle">
                                             <img
-                                                src={complete_tick}
+                                                src={
+                                                    item.isCompleted === true
+                                                        ? complete_tick
+                                                        : active_tick
+                                                }
                                                 alt="tick"
+                                                onClick={() => {
+                                                    this.props.handleCompleteTask(
+                                                        item.uid
+                                                    );
+                                                }}
                                             />
                                         </span>
-                                        <div className="todo-item-content">
+                                        <div
+                                            className={
+                                                item.isCompleted === true
+                                                    ? "todo-item-content completed"
+                                                    : "todo-item-content"
+                                            }
+                                        >
                                             {item.task}
                                         </div>
                                         <div className="todo-item-options">
@@ -38,6 +66,14 @@ class TodoList extends React.Component {
                                                 <img
                                                     src={editIcon}
                                                     alt="edit"
+                                                    onClick={() => {
+                                                        this.handleSetShowHideModalEdit(
+                                                            {
+                                                                task: item.task,
+                                                                uid: item.uid,
+                                                            }
+                                                        );
+                                                    }}
                                                 />
                                             </span>
                                             <span className="icon-btn">
@@ -53,6 +89,16 @@ class TodoList extends React.Component {
                                             </span>
                                         </div>
                                     </div>
+                                    <ModalEdit
+                                        show={this.state.isShowHideModelEdit}
+                                        editTask={this.state.editTask}
+                                        handleSetShowHideModalEdit={
+                                            this.handleSetShowHideModalEdit
+                                        }
+                                        handleEditTask={
+                                            this.props.handleEditTask
+                                        }
+                                    />
                                 </>
                             );
                         })}
