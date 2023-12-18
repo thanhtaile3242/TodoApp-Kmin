@@ -19,12 +19,30 @@ class Main extends React.Component {
         this.handleFilteProgressTask = this.handleFilteProgressTask.bind(this);
         this.handleFilterAllTask = this.handleFilterAllTask.bind(this);
     }
+
+    componentDidMount() {
+        const listTaskLocal = localStorage.getItem("list");
+        if (listTaskLocal) {
+            let arr = JSON.parse(listTaskLocal);
+            this.setState({
+                listTask: arr,
+                listFilterTask: arr,
+            });
+        } else {
+            localStorage.setItem("list", JSON.stringify([]));
+        }
+    }
+
     handleAddTask(taskObject) {
         this.setState((state) => ({
             listTask: [...state.listTask, taskObject],
             listFilterTask: [...state.listTask, taskObject],
             isAdd: true,
         }));
+        const listTaskLocal = localStorage.getItem("list");
+        let arr = JSON.parse(listTaskLocal);
+        arr.push(taskObject);
+        localStorage.setItem("list", JSON.stringify(arr));
     }
 
     handleDeleteTask(uid) {
@@ -35,7 +53,9 @@ class Main extends React.Component {
         this.setState({
             listTask: newListTask1,
             listFilterTask: newListTask2,
+            isAdd: true,
         });
+        localStorage.setItem("list", JSON.stringify(newListTask1));
     }
 
     handleCompleteTask(uid) {
@@ -45,7 +65,12 @@ class Main extends React.Component {
                 task.isCompleted = !task.isCompleted;
             }
         });
-        this.setState({ listTask: listTaskClone });
+        this.setState({
+            listTask: listTaskClone,
+            listFilterTask: listTaskClone,
+            isAdd: true,
+        });
+        localStorage.setItem("list", JSON.stringify(listTaskClone));
     }
 
     handleEditTask(uid, editTask) {
@@ -65,6 +90,7 @@ class Main extends React.Component {
             listTask: listTaskClone1,
             listFilterTask: listTaskClone2,
         });
+        localStorage.setItem("list", JSON.stringify(listTaskClone1));
     }
 
     handleFilterCompleteTask() {
